@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define INF (unsigned)!((int)0)
+#define INF 99999999999999
 #define m 1000000007
 #define fo(i, n) for(ll i=0;i<n;i++)
 typedef vector<int> vi;
@@ -22,12 +22,18 @@ int main(){
         temp=INF;
         if(i==0)
             v.push_back(0);
-        for(auto x:c){
-            if(i-x>=0)
-                temp = min(temp,v[i-x]+1);
+        else{
+            for(auto x:c){
+                if(i-x>=0)
+                    temp = min(temp,v[i-x]+1);
+            }
+            v.push_back(temp);
         }
-        v.push_back(temp);
     }
-    cout<<v[total+1];
+    if(temp!=INF)
+        cout<<v[total];
+    else
+        cout<<"-1";
+    
     return 0;
 }
